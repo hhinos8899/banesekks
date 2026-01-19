@@ -3,24 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ChatGPT Beta - Baccarat Predictor</title>
-  <link rel="stylesheet" href="./static/styles.css">
+  <title>ChatGPT</title>
+
+  <!-- ✅这里改成根目录 styles.css（只有这一行） -->
+  <link rel="stylesheet" href="./styles.css">
 </head>
 
 <body>
   <div id="content-wrapper">
     <div id="scalable-content">
       <div class="container">
-        <h1 class="title">ChatGPT Beta</h1>
 
+        <h1 class="title">ChatGPT</h1>
+
+        <!-- 顶部预测框 -->
         <div class="prediction-box">
           <div class="prediction-result">
-            <span class="result-label">AI</span>
+            <span class="result-label banker">B</span>
             <span class="percentage">+95.00%</span>
           </div>
           <p class="prediction-text" id="predictionText">请稍候...</p>
         </div>
 
+        <!-- 记录 -->
         <div class="game-record">
           <div class="record-row" id="recordDisplay"></div>
           <div class="card-indicators">
@@ -30,6 +35,7 @@
           </div>
         </div>
 
+        <!-- 按钮 -->
         <div class="control-panel">
           <button class="btn player-btn" onclick="recordResult('P')">Player (P)</button>
           <button class="btn banker-btn" onclick="recordResult('B')">Banker (B)</button>
@@ -39,10 +45,12 @@
 
         <button class="instruction-btn" onclick="toggleInstructions()">📋 Show Instructions</button>
 
+        <!-- 图表 -->
         <div class="chart-container">
           <canvas id="winChart"></canvas>
         </div>
 
+        <!-- 缩放 -->
         <div class="zoom-control-panel">
           <label for="zoomSlider">缩放:</label>
           <input type="range" id="zoomSlider" min="50" max="150" value="70">
@@ -57,6 +65,8 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="./static/app.js"></script>
+
+  <!-- ✅这里也改成根目录 app.js -->
+  <script src="./app.js"></script>
 </body>
 </html>
