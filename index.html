@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChatGPT Beta - Baccarat Predictor</title>
+  <link rel="stylesheet" href="./static/styles.css">
+</head>
+
+<body>
+  <div id="content-wrapper">
+    <div id="scalable-content">
+      <div class="container">
+        <h1 class="title">ChatGPT Beta</h1>
+
+        <div class="prediction-box">
+          <div class="prediction-result">
+            <span class="result-label">AI</span>
+            <span class="percentage">+95.00%</span>
+          </div>
+          <p class="prediction-text" id="predictionText">请稍候...</p>
+        </div>
+
+        <div class="game-record">
+          <div class="record-row" id="recordDisplay"></div>
+          <div class="card-indicators">
+            <span class="indicator">●</span>
+            <span class="indicator">●</span>
+            <span class="indicator">●</span>
+          </div>
+        </div>
+
+        <div class="control-panel">
+          <button class="btn player-btn" onclick="recordResult('P')">Player (P)</button>
+          <button class="btn banker-btn" onclick="recordResult('B')">Banker (B)</button>
+          <button class="btn back-btn" onclick="undoLastMove()">← Back</button>
+          <button class="btn reset-btn" onclick="resetGame()">Reset</button>
+        </div>
+
+        <button class="instruction-btn" onclick="toggleInstructions()">📋 Show Instructions</button>
+
+        <div class="chart-container">
+          <canvas id="winChart"></canvas>
+        </div>
+
+        <div class="zoom-control-panel">
+          <label for="zoomSlider">缩放:</label>
+          <input type="range" id="zoomSlider" min="50" max="150" value="70">
+          <span id="zoomValue">70%</span>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p>© 2026 ChatGPT Beta | Telegram: <a href="https://t.me/baccapp" target="_blank">@BACCAPP</a></p>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="./static/app.js"></script>
+</body>
+</html>
