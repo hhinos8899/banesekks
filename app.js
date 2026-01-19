@@ -215,9 +215,10 @@ window.toggleInstructions = function(){
     "1）默认看最后4手；4无预测→等5；5无预测→等6（最多6）；\n" +
     "2）只要预测出来(B/P)就回到4；\n" +
     "3）预测前显示“人工智能正在预测，请稍后...”，延迟2秒出结果；\n" +
-    "4）胜率循环：92-95-97-97-95-92（无限循环）"
+    "4）胜率循环：92-95-97-97-95-92"
   );
 };
+
 
 // ===== 初始化 =====
 document.addEventListener('DOMContentLoaded', function(){
@@ -281,3 +282,4 @@ function updateChartSafe(){
     }
   });
 }
+
