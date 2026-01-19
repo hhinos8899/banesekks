@@ -285,3 +285,38 @@ body {
 .footer a:hover {
     text-decoration: underline;
 }
+/* ✅自定义说明弹窗（替代 alert，不暴露网址） */
+.modal{
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,.55);
+  z-index: 9999;
+}
+.modal.hidden{ display:none; }
+
+.modal-box{
+  width: min(92vw, 480px);
+  background: #0b1f2a;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.45);
+}
+
+.modal-title{
+  font-weight: 800;
+  font-size: 1.1em;
+  margin-bottom: 10px;
+  color: #e6edf3;
+}
+
+.modal-text{
+  white-space: pre-line;
+  color: rgba(230,237,243,.75);
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
