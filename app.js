@@ -1,8 +1,7 @@
-// static/app.js  (Local rules version)
+// app.js (Local rules version)
 
-// ===== 你的本地规则（p 统一当 P）=====
+// ===== 你的本地规则（完全不改）=====
 const LOCAL_RULES = new Map([
-  // 上面是B的预测规则
   ["BBPP","P"],
   ["BBPB","P"],
   ["BPPPBB","P"],
@@ -18,7 +17,6 @@ const LOCAL_RULES = new Map([
   ["BPBB","B"],
   ["BPB","P"],
 
-  // 下面是P的预测规则
   ["PPBB","B"],
   ["PPBPB","B"],
   ["PPBPP","P"],
@@ -46,13 +44,13 @@ function fmtPct(v){
 
 // ===== 状态 =====
 let gameHistory = [];
-let windowN = 4;            // 4 -> 5 -> 6
+let windowN = 4;
 let waiting = false;
 let timer = null;
 
 // ===== DOM =====
-function $(sel){ return document.querySelector(sel); }
 function byId(id){ return document.getElementById(id); }
+function $(sel){ return document.querySelector(sel); }
 
 function setButtonsDisabled(disabled){
   const p = $('.player-btn');
@@ -82,7 +80,6 @@ function suffix(n){
   return gameHistory.slice(gameHistory.length - n).join('');
 }
 
-// 窗口N内：优先匹配最长后缀（<=N），最短到3位
 function predictAtWindow(N){
   const maxLen = Math.min(N, gameHistory.length);
   for(let len = maxLen; len >= 3; len--){
@@ -92,62 +89,54 @@ function predictAtWindow(N){
   return null;
 }
 
-// ✅预测中（顶部显示 AI + ...%）
+// UI显示
 function showPending(){
-  const label = document.querySelector('.prediction-result .result-label');
-  const pctEl = document.querySelector('.prediction-result .percentage');
-  const el = byId('predictionText');
+  const label = byId('resultLabel');
+  const pctEl = byId('resultPct');
+  const text = byId('predictionText');
 
   if(label){
-    label.textContent = 'AI建议';
+    label.textContent = 'AI';
     label.classList.remove('player','banker');
   }
   if(pctEl) pctEl.textContent = '...%';
-
-  if(el){
-    el.textContent = '人工智能正在预测，请稍后...';
-  }
+  if(text) text.textContent = '人工智能正在预测，请稍后...';
 }
 
-// ✅预测完成（顶部红/绿框显示B/P + 右边显示百分比）
 function showResult(side, pct){
-  const label = document.querySelector('.prediction-result .result-label');
-  const pctEl = document.querySelector('.prediction-result .percentage');
-  const el = byId('predictionText');
+  const label = byId('resultLabel');
+  const pctEl = byId('resultPct');
+  const text = byId('predictionText');
 
   if(label){
-    label.textContent = side;  // B/P
+    label.textContent = side;
     label.classList.remove('player','banker');
     label.classList.add(side === 'B' ? 'banker' : 'player');
   }
   if(pctEl) pctEl.textContent = fmtPct(pct);
-
-  if(el){
-    el.textContent = side; // 底部再显示B/P
-  }
+  if(text) text.textContent = side;
 }
 
-function showIdle(text){
-  const label = document.querySelector('.prediction-result .result-label');
-  const pctEl = document.querySelector('.prediction-result .percentage');
-  const el = byId('predictionText');
+function showIdle(){
+  const label = byId('resultLabel');
+  const pctEl = byId('resultPct');
+  const text = byId('predictionText');
 
   if(label){
     label.textContent = 'AI';
     label.classList.remove('player','banker');
   }
   if(pctEl) pctEl.textContent = '';
-
-  if(el) el.textContent = text || '请稍候...';
+  if(text) text.textContent = '请稍候...';
 }
 
-// ===== 核心：本地预测 =====
+// 核心逻辑
 function updatePrediction(){
   if(timer){ clearTimeout(timer); timer = null; }
 
   if(gameHistory.length < 4){
     windowN = 4;
-    showIdle('请稍候...');
+    showIdle();
     return;
   }
 
@@ -162,21 +151,19 @@ function updatePrediction(){
 
     timer = setTimeout(() => {
       showResult(out, pct);
-
       windowN = 4;
       waiting = false;
       setButtonsDisabled(false);
       timer = null;
     }, 2000);
-
     return;
   }
 
   if(windowN < 6) windowN += 1;
-  showIdle('请稍候...');
+  showIdle();
 }
 
-// ===== 按钮函数 =====
+// 绑定按钮
 window.recordResult = function(type){
   if(waiting) return;
   if(type !== 'B' && type !== 'P') return;
@@ -204,11 +191,11 @@ window.resetGame = function(){
   waiting = false;
   setButtonsDisabled(false);
   renderHistory();
-  showIdle('请稍候...');
+  showIdle();
   updateChartSafe();
 };
 
-// ===== 说明按钮 =====
+/* ✅说明按钮：自定义弹窗，不用 alert/confirm，所以不显示网址 */
 window.toggleInstructions = function(){
   const modal = document.getElementById('instModal');
   const text = document.getElementById('instText');
@@ -228,16 +215,12 @@ window.closeInstructions = function(){
   if(modal) modal.classList.add('hidden');
 };
 
-
-
-
-// ===== 初始化 =====
+// 缩放+初始化
 document.addEventListener('DOMContentLoaded', function(){
   renderHistory();
   updatePrediction();
   updateChartSafe();
 
-  // 缩放
   const zoomSlider = byId('zoomSlider');
   const zoomValue = byId('zoomValue');
   const contentWrapper = byId('content-wrapper');
@@ -258,7 +241,7 @@ document.addEventListener('DOMContentLoaded', function(){
   }
 });
 
-// ===== 图表 =====
+// 图表
 function updateChartSafe(){
   const canvas = byId('winChart');
   if(!canvas) return;
@@ -293,7 +276,3 @@ function updateChartSafe(){
     }
   });
 }
-
-
-
-
