@@ -210,16 +210,14 @@ window.resetGame = function(){
 
 // ===== 说明按钮 =====
 window.toggleInstructions = function(){
-  // ✅保留按钮，但不使用 alert（避免暴露网址）
   const msg =
     "使用说明：\n" +
     "1）点击 Player / Banker 录入结果\n" +
     "2）预测时会提示正在预测，约2秒后显示结果\n" +
     "3）Back 撤销上一手，Reset 重置";
-
-  // 用页面提示代替 alert
-  const el = document.getElementById("predictionText");
-  if(el) el.textContent = msg;
+  
+  // ✅confirm 不显示网址（不会有 xxx.github.io 显示）
+  confirm(msg);
 };
 
 
@@ -286,5 +284,6 @@ function updateChartSafe(){
     }
   });
 }
+
 
 
