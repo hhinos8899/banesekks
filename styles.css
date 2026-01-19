@@ -1,291 +1,250 @@
 /* 基础样式 */
-html {
-    height: 100%;
-}
+html { height: 100%; }
 body {
-    margin: 0;
-    padding: 10px 0; /* 增加上下留白 */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #021621;
-    color: #e0e0e0;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    height: 100%; /* 确保 body 占据整个视口高度 */
-    font-size: 16px; /* 整体字体稍微增加 */
-    overflow-y: auto; /* 允许 body 处理页面内容的整体滚动 */
+  margin: 0;
+  padding: 10px 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #021621;
+  color: #e0e0e0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  height: 100%;
+  font-size: 16px;
+  overflow-y: auto;
 }
+
 #content-wrapper {
-    width: 100%;
-    max-width: 750px; /* 增加最大宽度 */
-    background-color: rgba(255, 255, 255, 0.08);
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 0; /* 移除 flex-grow: 1; */
-    height: auto; /* 让高度根据内容自适应 */
-    padding: 20px; /* 增加内部填充 */
-    box-sizing: border-box;
-    position: relative;
-    overflow-y: visible; /* 确保不裁剪内容，让body处理滚动 */
-    /* 移除 max-height */
-    transform-origin: top center; /* 确保缩放从顶部中心开始 */
+  width: 100%;
+  max-width: 750px;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  padding: 20px;
+  box-sizing: border-box;
+  position: relative;
+  overflow-y: visible;
+  transform-origin: top center;
 }
-#scalable-content {
-    width: 100%;
-    padding: 0; /* 移除内部填充，让content-wrapper的padding生效 */
-    padding-bottom: 0; /* 移除内部填充 */
-    box-sizing: border-box;
-}
-/* 图表区域 */
-.chart-container {
-    background-color: rgba(255, 255, 255, 0.05);
-    padding: 15px; /* 增加 padding */
-    border-radius: 12px;
-    margin-bottom: 15px; /* 增加 margin-bottom */
-    width: 100%;
-    box-sizing: border-box;
-    /* 移除 max-height */
-    /* 移除 overflow */
-}
-.chart-container canvas {
-    width: 100% !important;
-    height: auto !important;
-    /* 移除 max-height */
-}
+
 .container {
-    width: 100%;
-    margin: 0 auto;
-    padding: 0;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
+
 .title {
-    text-align: center;
-    color: #FFD700;
-    font-size: 2.5em; /* 稍微增加字体大小 */
-    margin-bottom: 15px; /* 稍微增加 margin-bottom */
-    font-weight: 600;
-    letter-spacing: 1px;
+  text-align: center;
+  color: #FFD700;
+  font-size: 2.8em;
+  margin-bottom: 15px;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
-/* 预测结果区域 */
+
+/* 预测框 */
 .prediction-box {
-    background-color: rgba(255, 255, 255, 0.08);
-    padding: 15px; /* 稍微增加 padding */
-    border-radius: 12px;
-    margin-bottom: 15px; /* 稍微增加 margin-bottom */
-    text-align: center;
+  background-color: rgba(255, 255, 255, 0.08);
+  padding: 15px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  text-align: center;
 }
+
 .prediction-result {
-    margin: 15px 0; /* 稍微增加 margin */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px; /* 稍微增加 gap */
+  margin: 15px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
+
 .result-label {
-    /* background-color: #238636; */ /* 移除默认背景色 */
-    padding: 6px 15px; /* 稍微增加 padding */
-    border-radius: 25px;
-    font-weight: bold;
-    font-size: 1.4em; /* 稍微增加字体大小 */
-    color: #e6edf3;
-    min-width: 100px; /* 稍微增加 min-width */
-    text-align: center;
+  padding: 8px 20px;
+  border-radius: 25px;
+  font-weight: bold;
+  font-size: 1.6em;
+  color: #e6edf3;
+  min-width: 100px;
+  text-align: center;
 }
-/* AI预测结果的特定颜色 */
-.result-label.player {
-    background-color: #28a745; /* 绿色 */
-}
-.result-label.banker {
-    background-color: #ff4d4d; /* 红色 */
-}
+
+.result-label.player { background-color: #28a745; }
+.result-label.banker { background-color: #ff4d4d; }
+
 .percentage {
-    color: #58a6ff;
-    margin-left: 0;
-    font-weight: bold;
-    font-size: 1.3em; /* 稍微增加字体大小 */
+  color: #58a6ff;
+  font-weight: bold;
+  font-size: 1.4em;
 }
+
 .prediction-text {
-    font-size: 1em; /* 稍微增加字体大小 */
-    color: #8b949e;
-    margin-top: 10px; /* 稍微增加 margin-top */
-    line-height: 1.5;
+  font-size: 1em;
+  color: #8b949e;
+  margin-top: 10px;
+  line-height: 1.5;
 }
-/* 游戏记录显示区域 */
+
+/* 记录区 */
 .game-record {
-    background-color: rgba(255, 255, 255, 0.05);
-    padding: 10px; /* 稍微增加 padding */
-    border-radius: 12px;
-    margin-bottom: 15px; /* 稍微增加 margin-bottom */
-    overflow-x: auto;
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 10px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  overflow-x: auto;
 }
+
 .record-row {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 6px; /* 稍微增加 gap */
-    min-height: 35px; /* 稍微增加 min-height */
-    align-items: center;
-    padding-bottom: 5px;
-    justify-content: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 6px;
+  min-height: 35px;
+  align-items: center;
+  padding-bottom: 5px;
+  justify-content: center;
 }
+
 .record-item {
-    min-width: 35px; /* 稍微增加 min-width */
-    height: 35px; /* 稍微增加 height */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0; /* 修改为方形 */
-    font-weight: bold;
-    color: white;
-    font-size: 0.8em; /* 稍微增加字体大小 */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* 恢复阴影 */
+  min-width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0;
+  font-weight: bold;
+  color: white;
+  font-size: 0.8em;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
-.record-item.p {
-    background-color: #28a745;
-}
-.record-item.b {
-    background-color: #ff4d4d;
-}
+
+.record-item.p { background-color: #28a745; }
+.record-item.b { background-color: #ff4d4d; }
+
 .card-indicators {
-    display: flex;
-    justify-content: center;
-    gap: 10px; /* 稍微增加 gap */
-    margin-top: 10px; /* 稍微增加 margin-top */
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
 }
+
 .indicator {
-    color: rgba(255, 255, 255, 0.2);
-    font-size: 20px; /* 稍微增加字体大小 */
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 20px;
 }
-/* 控制按钮区域 */
+
+/* 按钮 */
 .control-panel {
-    display: flex;
-    gap: 10px; /* 稍微增加 gap */
-    justify-content: center;
-    margin: 20px 0; /* 稍微增加 margin */
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: 20px 0;
 }
+
 .btn {
-    padding: 12px 25px; /* 稍微增加 padding */
-    border: none;
-    border-radius: 8px; /* 稍微增加圆角 */
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 1em; /* 稍微增加字体大小 */
-    transition: background-color 0.2s, transform 0.2s;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* 恢复阴影 */
-    color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1em;
+  transition: background-color 0.2s, transform 0.2s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  color: white;
 }
+
 .btn:hover {
-    transform: translateY(-2px); /* 恢复 translateY */
-    opacity: 0.9;
+  transform: translateY(-2px);
+  opacity: 0.9;
 }
-.player-btn {
-    background-color: #28a745;
-}
-.banker-btn {
-    background-color: #ff4d4d;
-}
-.back-btn {
-    background-color: #6a737d;
-}
-.reset-btn {
-    background-color: #30363d;
-}
-/* 缩放控制区域样式 */
-.zoom-control-panel {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px; /* 增加 gap */
-    margin: 10px 0; /* 增加 margin */
-    padding: 8px; /* 增加 padding */
-    background-color: rgba(255, 255, 255, 0.05);
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-}
-.zoom-control-panel label {
-    font-weight: bold;
-    color: #8b949e;
-    font-size: 0.9em; /* 稍微增加字体大小 */
-}
-.zoom-control-panel input[type="range"] {
-    width: 120px; /* 调整宽度 */
-    -webkit-appearance: none;
-    appearance: none;
-    background: #4a4a6a;
-    outline: none;
-    border-radius: 5px;
-    height: 6px; /* 调整高度 */
-    cursor: pointer;
-}
-.zoom-control-panel input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 18px; /* 调整滑块大小 */
-    height: 18px; /* 调整滑块大小 */
-    background: #58a6ff;
-    border-radius: 50%;
-    cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-.zoom-control-panel input[type="range"]::-moz-range-thumb {
-    width: 18px;
-    height: 18px;
-    background: #58a6ff;
-    border-radius: 50%;
-    cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-.zoom-control-panel span {
-    font-weight: bold;
-    min-width: 40px; /* 调整宽度 */
-    text-align: right;
-    color: #e6edf3;
-    font-size: 0.9em; /* 稍微增加字体大小 */
-}
+
+.player-btn { background-color: #28a745; }
+.banker-btn { background-color: #ff4d4d; }
+.back-btn { background-color: #6a737d; }
+.reset-btn { background-color: #30363d; }
+
 /* 说明按钮 */
 .instruction-btn {
-    display: block;
-    margin: 15px auto; /* 稍微增加 margin */
-    padding: 10px 20px; /* 稍微增加 padding */
-    background-color: #238636;
-    border: none;
-    border-radius: 8px; /* 恢复圆角 */
-    cursor: pointer;
-    font-weight: bold;
-    color: white;
-    font-size: 0.95em; /* 稍微增加字体大小 */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* 恢复阴影 */
-    transition: background-color 0.2s, transform 0.2s;
+  display: block;
+  margin: 15px auto;
+  padding: 10px 20px;
+  background-color: #238636;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  color: white;
+  font-size: 0.95em;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.2s, transform 0.2s;
 }
 .instruction-btn:hover {
-    transform: translateY(-2px);
-    opacity: 0.9;
+  transform: translateY(-2px);
+  opacity: 0.9;
 }
+
+/* 图表 */
+.chart-container {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 15px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.chart-container canvas {
+  width: 100% !important;
+  height: auto !important;
+}
+
+/* 缩放 */
+.zoom-control-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 10px 0;
+  padding: 8px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+.zoom-control-panel label {
+  font-weight: bold;
+  color: #8b949e;
+  font-size: 0.9em;
+}
+.zoom-control-panel input[type="range"] {
+  width: 120px;
+}
+.zoom-control-panel span {
+  font-weight: bold;
+  min-width: 40px;
+  text-align: right;
+  color: #e6edf3;
+  font-size: 0.9em;
+}
+
 /* 页脚 */
 .footer {
-    text-align: center;
-    margin-top: auto;
-    padding: 0;
-    height: 50px; /* 稍微增加高度 */
-    line-height: 50px; /* 垂直居中文字 */
-    color: #6a737d;
-    font-size: 0.9em; /* 字体小一号 */
-    flex-shrink: 0;
+  text-align: center;
+  margin-top: auto;
+  padding: 0;
+  height: 50px;
+  line-height: 50px;
+  color: #6a737d;
+  font-size: 0.9em;
 }
-.footer a {
-    color: #58a6ff;
-    text-decoration: none;
-}
-.footer a:hover {
-    text-decoration: underline;
-}
-/* ✅自定义说明弹窗（替代 alert，不暴露网址） */
+
+/* ✅自定义说明弹窗（替代 alert/confirm，不显示网址） */
 .modal{
   position: fixed;
   inset: 0;
@@ -319,4 +278,3 @@ body {
   line-height: 1.6;
   margin-bottom: 14px;
 }
-
