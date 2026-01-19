@@ -210,15 +210,24 @@ window.resetGame = function(){
 
 // ===== 说明按钮 =====
 window.toggleInstructions = function(){
-  const msg =
-    "使用说明：\n" +
-    "1）点击 Player / Banker 录入结果\n" +
-    "2）预测时会提示正在预测，约2秒后显示结果\n" +
-    "3）Back 撤销上一手，Reset 重置";
-  
-  // ✅confirm 不显示网址（不会有 xxx.github.io 显示）
-  confirm(msg);
+  const modal = document.getElementById('instModal');
+  const text = document.getElementById('instText');
+
+  if(text){
+    text.textContent =
+      "1）点击 Player / Banker 录入结果\n" +
+      "2）预测时会提示正在预测，约2秒后显示结果\n" +
+      "3）Back 撤销上一手，Reset 重置";
+  }
+
+  if(modal) modal.classList.remove('hidden');
 };
+
+window.closeInstructions = function(){
+  const modal = document.getElementById('instModal');
+  if(modal) modal.classList.add('hidden');
+};
+
 
 
 
@@ -284,6 +293,7 @@ function updateChartSafe(){
     }
   });
 }
+
 
 
 
