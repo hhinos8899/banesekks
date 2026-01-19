@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ChatGPT</title>
 
-  <!-- ✅这里改成根目录 styles.css（只有这一行） -->
-  <link rel="stylesheet" href="./styles.css">
+  <!-- ✅加 v=9 是为了强制刷新缓存（很重要） -->
+  <link rel="stylesheet" href="./styles.css?v=9">
 </head>
 
 <body>
@@ -19,8 +19,8 @@
         <!-- 顶部预测框 -->
         <div class="prediction-box">
           <div class="prediction-result">
-            <span class="result-label banker">B</span>
-            <span class="percentage">+95.00%</span>
+            <span class="result-label banker" id="resultLabel">AI</span>
+            <span class="percentage" id="resultPct"></span>
           </div>
           <p class="prediction-text" id="predictionText">请稍候...</p>
         </div>
@@ -43,6 +43,7 @@
           <button class="btn reset-btn" onclick="resetGame()">Reset</button>
         </div>
 
+        <!-- ✅保留按钮 -->
         <button class="instruction-btn" onclick="toggleInstructions()">📋 Show Instructions</button>
 
         <!-- 图表 -->
@@ -60,22 +61,22 @@
     </div>
 
     <footer class="footer">
-      <p>© 2026 ChatGPT Beta | Telegram: <a href="https://t.me/baccapp" target="_blank">@BACCAPP</a></p>
+      <p>© 2026 ChatGPT</p>
     </footer>
+  </div>
+
+  <!-- ✅自定义说明弹窗：不会显示网址 -->
+  <div id="instModal" class="modal hidden">
+    <div class="modal-box">
+      <div class="modal-title">使用说明</div>
+      <div id="instText" class="modal-text"></div>
+      <button class="btn back-btn" onclick="closeInstructions()">关闭</button>
+    </div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-  <!-- ✅这里也改成根目录 app.js -->
-  <script src="./app.js"></script>
-<!-- ✅自定义说明弹窗（不显示网址） -->
-<div id="instModal" class="modal hidden">
-  <div class="modal-box">
-    <div class="modal-title">使用说明</div>
-    <div id="instText" class="modal-text"></div>
-    <button class="btn back-btn" onclick="closeInstructions()">关闭</button>
-  </div>
-</div>
+  <!-- ✅加 v=9 强制刷新缓存 -->
+  <script src="./app.js?v=9"></script>
 </body>
 </html>
-
