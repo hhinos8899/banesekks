@@ -13,7 +13,7 @@ const LOCAL_RULES = new Map([
   ["BPPBB","B"],
   ["BPPBP","B"],
   ["BBBPPB","P"],
-  ["BPBP","P"],
+  ["BPBP","B"],
   ["BPBB","B"],
   ["BPB","P"],
 
@@ -24,7 +24,7 @@ const LOCAL_RULES = new Map([
   ["PBBBB","P"],
   ["PPPBB","P"],
   ["PPPP","P"],
-  ["PBPB","B"],
+  ["PBPB","P"],
   ["PPPBP","B"],
   ["PBBP","P"],
   ["PBPP","P"],
@@ -276,3 +276,4 @@ function updateChartSafe(){
     }
   });
 }
+
